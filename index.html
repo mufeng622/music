@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html data-design-width="750" data-design-font="100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="//www.jd.com/favicon.ico" type="image/x-icon">
+    <link rel="dns-prefetch" href="//p1.music.126.net">
+    <link rel="dns-prefetch" href="//p2.music.126.net">
+    <link rel="dns-prefetch" href="//p3.music.126.net">
+    <link rel="dns-prefetch" href="//p4.music.126.net">
+    <title>music</title>
+
+    <script>
+      function resizes(){
+        var html = document.getElementsByTagName('html')[0];
+        var designWidth = parseInt(html.dataset.designWidth);
+        var designFont = parseInt(html.dataset.designFont);
+        var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+
+        if(screenWidth >= 750){
+          screenWidth = 750
+        }
+        var fs = screenWidth * designFont/designWidth;
+        html.style.fontSize = fs + 'px'
+      }
+
+      resizes();
+      window.onresize = function(){
+        resizes()
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

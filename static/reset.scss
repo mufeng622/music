@@ -1,0 +1,36 @@
+body,html,div,p,span,ul,ol,li,h1,h2,h3,h4,h5,h6,strong,em,i,table,th,tr,td,input,button,textarea,img,a{
+  margin: 0;
+  padding: 0;
+}
+img{
+  display: block;
+  border: none 0;
+}
+a{
+  text-decoration: none;
+  color: #333;
+}
+ul,ol,li{
+  list-style: none;
+}
+input,button,textarea{
+  border: none;
+  outline: none;
+}
+table{
+  border: none;
+  border-collapse: collapse;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: normal;
+}
+body,html{
+  height: 100%;
+  width: 100%;
+}
+@media screen and (width: 375px) and (min-height: 635px) and (-webkit-min-device-pixel-ratio: 3){
+  body{
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-bottom: contant(safe-area-inset-bottom);
+  }
+}

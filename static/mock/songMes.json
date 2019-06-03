@@ -1,0 +1,89 @@
+{
+  "code": 200,
+  "msg": "OK",
+  "timestamp": 1559037761599,
+  "data": {
+    "privileges": [
+      {
+        "st": 0,
+        "flag": 68,
+        "subp": 1,
+        "fl": 128000,
+        "fee": 8,
+        "dl": 0,
+        "cp": 1,
+        "preSell": false,
+        "cs": false,
+        "toast": false,
+        "maxbr": 999000,
+        "id": 296837,
+        "pl": 128000,
+        "sp": 7,
+        "payed": 0
+      }
+    ],
+    "code": 200,
+    "songs": [
+      {
+        "no": 6,
+        "rt": "600902000009050828",
+        "copyright": 2,
+        "fee": 8,
+        "mst": 9,
+        "pst": 0,
+        "pop": 100,
+        "dt": 238186,
+        "rtype": 0,
+        "s_id": 0,
+        "rtUrls": [],
+        "id": 296837,
+        "st": 0,
+        "cd": "1",
+        "publishTime": 1314892800000,
+        "cf": "",
+        "h": {
+          "br": 320000,
+          "fid": 0,
+          "size": 9530558,
+          "vd": -13500
+        },
+        "mv": 5842901,
+        "al": {
+          "picUrl": "http://p1.music.126.net/W9HqFsgMcjgWjW9SutIvrw==/18956679974613469.jpg",
+          "name": "My Love",
+          "tns": [],
+          "pic_str": "18956679974613469",
+          "id": 29443,
+          "pic": 18956679974613468
+        },
+        "l": {
+          "br": 128000,
+          "fid": 0,
+          "size": 3812249,
+          "vd": -9000
+        },
+        "m": {
+          "br": 192000,
+          "fid": 0,
+          "size": 5718352,
+          "vd": -10800
+        },
+        "cp": 677020,
+        "alia": [],
+        "djId": 0,
+        "ar": [
+          {
+            "name": "田馥甄",
+            "tns": [],
+            "alias": [],
+            "id": 9548
+          }
+        ],
+        "ftype": 0,
+        "t": 0,
+        "v": 122,
+        "name": "魔鬼中的天使"
+      }
+    ]
+  }
+}

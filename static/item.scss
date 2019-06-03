@@ -1,0 +1,190 @@
+@import "./common";
+
+.item{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: .2rem;
+  color: #333;
+  .itemTop{
+    position: relative;
+    .itemImg{
+     width: 100%;
+       height: 2.2rem;
+       overflow: hidden;
+       img{
+         width: 100%;
+         height: 100%;
+       }
+   }
+   .itemNum{
+     width: 100%;
+     position: absolute;
+     left: 0;
+     top: 0;
+     background: rgba(0, 0, 0, .45);
+     height: .68rem;
+     display: -webkit-flex;
+     display: flex;
+     -webkit-align-items: center;
+     align-items: center;
+     -webkit-justify-content: flex-end;
+     justify-content: flex-end;
+     span{
+       margin-right: .2rem;
+       font-size: .28rem;
+       color: #fff;
+     }
+   }
+    .video{
+      display: block;
+      width: 1.2rem;
+      height: 1.2rem;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -.6rem;
+      margin-top: -.6rem;
+      background: rgba(255, 255, 255, .8);
+      @include borderRadius();
+      img{
+        width: .6rem;
+        margin: .3rem auto;
+      }
+    }
+  }
+  .itemText{
+   font-size: .28rem;
+   margin-top: .1rem;
+   .itemTitle{
+     width: 100%;
+     @include ellips();
+   }
+    .itemSinger{
+      color: #666;
+      width: 100%;
+      @include ellips();
+    }
+  }
+}
+
+.songItem{
+  .itemTop{
+    .itemImg{
+      height: 3.4rem;
+    }
+    .tag{
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: .1rem .2rem;
+      font-size: .24rem;
+      background: rgba(0, 0, 0, .8);
+      color: #fff;
+      font-style: normal;
+    }
+  }
+  .author{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+  }
+}
+
+.rankItemList .van-cell:not(:last-child)::after{
+  right: .32rem;
+}
+.rankItemListChild{
+  .rankTitle{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: .36rem;
+    margin-bottom: .2rem;
+    color: #333;
+    span{
+      display: block;
+      width: .64rem;
+      height: .64rem;
+      text-align: center;
+      line-height: .64rem;
+      background: #ccc;
+      color: #fff;
+      margin-right: .3rem;
+      @include borderRadius();
+    }
+    strong{
+      flex: 1;
+      @include ellips();
+    }
+  }
+  p{
+    margin-left: .94rem;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    em,i{
+      font-style: normal;
+    }
+    i{
+      color: #999;
+    }
+  }
+  &:nth-child(1){
+    .rankTitle{
+      color: #e20;
+      span{
+        background: #e20;
+      }
+    }
+  }
+  &:nth-child(2){
+    .rankTitle{
+      color: orange;
+      span{
+        background: orange;
+      }
+    }
+  }
+  &:nth-child(3){
+    .rankTitle{
+      color: lightcoral;
+      span{
+        background: lightcoral;
+      }
+    }
+  }
+}
+
+.hotItem{
+  width: 33.3333%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  .hotImg{
+    width: 2rem;
+    height: 2rem;
+    overflow: hidden;
+    margin: .4rem auto 0;
+    @include borderRadius();
+    border: .04rem solid #e20;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  span{
+    font-size: .28rem;
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin-top: .2rem;
+    @include ellips();
+  }
+}
+

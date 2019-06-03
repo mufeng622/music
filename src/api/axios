@@ -1,0 +1,27 @@
+
+import axios from 'axios';
+
+axios.defaults.baseUrl = process.env.NODE_ENV === 'mock' ? '/mock' : '/api'
+
+export default {
+  defOpt: {
+    method: 'get',
+    timeout: 10000,
+    success: function(){},
+    error: function(){}
+  },
+  send(options){
+    let newOpt = Object.assign({}, this.defOpt, options);
+    axios(newOpt).then((res)=>{
+      if(res.data.code === 200){
+        setTimeout(()=>{
+          newOpt.success(res.data)
+        }, 500)
+      }else{
+        newOpt.error(res)
+      }
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }
+}

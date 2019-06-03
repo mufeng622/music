@@ -1,0 +1,37 @@
+
+@mixin ellips($line: 1){
+  overflow: hidden;
+  @if $line == 1 {
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    display: box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+  }
+}
+
+@mixin borderRadius($radius: 50%){
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin border1px($color){
+  &::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 200%;
+    border: 1px solid $color;
+    transform-origin: 0 0;
+    transform: scale(.5);
+  }
+}
+
+

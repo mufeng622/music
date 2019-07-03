@@ -1,22 +1,22 @@
 <template>
   <div class="rage">
     <Banner></Banner>
-    <div class="singList">
+    <div class="singList" v-if="singListGet">
       <div class="title singTitle">
         <h5>推荐音乐</h5>
         <span>更多&gt;</span>
       </div>
       <div class="signListCon">
-        <Item @musicListen="musicListen(item.id)" v-for="item in singListGet" :key="item.id" :item="item"></Item>
+        <Item v-for="item in singListGet" :key="item.id" :item="item"></Item>
       </div>
     </div>
 
-    <div class="singList">
+    <div class="singList" v-if="mvListGet">
       <div class="title singTitle">
         <h5>推荐MV</h5>
         <span>更多&gt;</span>
       </div>
-      <div class="signListCon">
+      <div class="signListCon mvListCon">
         <ItemMv v-for="item in mvListGet" :key="item.id" :item="item"></ItemMv>
       </div>
     </div>
@@ -32,26 +32,10 @@
     name: 'Rage',
     components: {Banner, Item, ItemMv},
     computed: {
-      ...mapGetters(['singListGet', 'mvListGet', 'songNowListGet'])
+      ...mapGetters(['singListGet', 'mvListGet'])
     },
     methods: {
-      ...mapActions(['singListMethod', 'mvListMethod', 'isShowAudioMethod', 'songNowMethod', 'songNowMesMethod']),
-      musicListen(id){
-        var isSongHas = false;
-        //显示音频播放
-        this.isShowAudioMethod()
-        //获取歌曲的地址
-        this.songNowMethod();
-        //获取单曲的信息
-        this.songNowListGet.length > 0 && this.songNowListGet.map((item)=>{
-          if(item.id === id){
-            isSongHas = true
-          }
-        })
-        if(!isSongHas){
-          this.songNowMesMethod()
-        }
-      }
+      ...mapActions(['singListMethod', 'mvListMethod'])
     },
     created() {
       this.singListMethod()
@@ -86,6 +70,11 @@
   justify-content: space-around;
   .item{
     width: 2.2rem;
+  }
+}
+.mvListCon{
+  .item{
+    width: 3.4rem;
   }
 }
 </style>

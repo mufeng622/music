@@ -1,7 +1,9 @@
 <template>
   <div class="top">
     <h1>音乐</h1>
-    <span></span>
+    <div>
+      <router-link to="/search" tag="span" class="iconSearch"></router-link>
+    </div>
   </div>
 </template>
 
@@ -31,13 +33,21 @@
       color: #fff;
       margin-left: .2rem;
     }
-    span{
+    .iconSearch{
       display: block;
-      width: .48rem;
+      width: .84rem;
       height: .48rem;
       background: url("../../../static/images/search.png") no-repeat center;
       background-size: .48rem .48rem;
-      margin-right: .2rem;
+      margin: 0 .1rem;
+    }
+    div{
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
     }
   }
 </style>

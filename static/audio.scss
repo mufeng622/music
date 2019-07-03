@@ -1,3 +1,4 @@
+@import "./common";
 .audios{
   position: fixed;
   left: 0;
@@ -29,6 +30,7 @@
   }
 }
 .audio-mes-text{
+  max-width: 2.4rem;
   flex: 1;
   display: -webkit-flex;
   display: flex;
@@ -36,11 +38,17 @@
   flex-direction: column;
   margin-left: .2rem;
   span{
+    display: block;
+    width: 100%;
     font-size: .32rem;
     margin-bottom: .2rem;
+    @include ellips();
   }
   i{
+    display: block;
+    width: 100%;
     font-style: normal;
+    @include ellips();
   }
 }
 .audio-btn{
@@ -82,5 +90,37 @@
     display: block;
     height: .08rem;
     background: #e20;
+  }
+}
+.songList-popups{
+  width: 100%;
+  overflow: hidden;
+  h4{
+    font-size: .36rem;
+    margin: .3rem 0 .3rem .2rem;
+  }
+  .list-cell{
+    border-top: 1px solid #ccc;
+    height: 5.68rem;
+    overflow-y: auto;
+  }
+}
+.songList-item .van-cell__value{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  span{
+    font-size: .36rem;
+    align-self: center;
+    margin-right: .4rem;
+  }
+  h5{
+    font-size: .32rem;
+  }
+}
+.detailItemCur{
+  span, h5, h6{
+    color: #e20;
   }
 }

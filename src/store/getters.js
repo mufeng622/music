@@ -1,5 +1,6 @@
 
 const getters = {
+  bannerListGet: (state) => state.bannerList.slice(0, 5),
   singListGet: (state)=> state.singList.slice(0, 9),
   mvListGet: (state)=> state.mvList,
   collectionListGet: (state)=> state.collectionList,
@@ -7,11 +8,17 @@ const getters = {
   singerListGet: (state) => state.singerList,
   isShowAudioGet: (state) => state.isShowAudio,
   songNowGet: (state) => state.songNow,
-  songNowListGet: (state) => state.songNowList,
-  detailIdGet: (state) => state.detailId,
-  songNowIdx: (state) => state.songNowIdx,
+  songNowMesGet: (state) => state.songNowMes,
 
-  collectionSongListGet: (state) => state.collectionSongList
+  songNowListGet: (state) => state.songNowList,
+  songIndexGet: (state) => state.songIndex,
+  detailIdGet: (state) => state.detailId,
+
+  collectionSongListGet: (state) => state.collectionSongList,
+  isPlayGet: (state)=> state.isPlay,
+  isLoadingGet: (state) => state.isLoading,
+  isErrorGet: (state) => state.isError,
+  searchListGet: (state) => state.searchList
 }
 
 export default getters

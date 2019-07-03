@@ -28,6 +28,17 @@ body,html{
   height: 100%;
   width: 100%;
 }
+.more-box{
+  width: 100%;
+  background: #f6f6f6;
+  .more{
+    width: 100%;
+    font-size: .28rem;
+    text-align: center;
+    padding: .1rem 0;
+    color: #666;
+  }
+}
 @media screen and (width: 375px) and (min-height: 635px) and (-webkit-min-device-pixel-ratio: 3){
   body{
     padding-bottom: env(safe-area-inset-bottom);

@@ -3,14 +3,14 @@
     <router-link :to="'/detail/' + item.id">
       <div class="itemTop">
         <div class="itemImg">
-          <img v-lazy="item.picUrl + '?thumbnail=400x0&quality=10&type=webp'">
+          <img v-lazy="item.coverImgUrl + '?thumbnail=400x0&quality=10&type=webp'">
         </div>
-        <i class="tag">{{item.publishTime | timeFilter}}</i>
+        <i class="tag">{{item.updateTime | timeFilter}}</i>
       </div>
       <div class="itemText">
         <h4 class="itemTitle">{{item.name}}</h4>
-        <p class="author">
-          <span>{{item.artist.name}}</span>
+        <p class="author" v-if="item.creator">
+          <span>{{item.creator.nickname}}</span>
         </p>
       </div>
     </router-link>

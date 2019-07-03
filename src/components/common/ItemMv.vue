@@ -16,9 +16,7 @@
 <script>
   export default {
     name: 'ItemMv',
-    props: ['item', 'nums'],
-    filters: {
-    }
+    props: ['item']
   }
 </script>
 

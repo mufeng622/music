@@ -8,6 +8,8 @@ import actions from './actions'
 Vue.use(Vuex)
 
 const state = {
+  //banner
+  bannerList: [],
   //推荐歌单
   singList: [],
   //推荐MV
@@ -20,14 +22,21 @@ const state = {
   singerList: [],
   //是否显示音乐播放器
   isShowAudio: false,
-  //正在播放歌曲
+  //正在播放歌曲、信息、播放列表
   songNow: '',
+  songNowMes: {},
   songNowList: [],
-  songNowIdx: 0,
-  //正在播放歌曲加样式
+  songIndex: 0,
+  //根据id给正在播放歌曲加样式
   detailId: '',
   //专辑详情
-  collectionSongList: {}
+  collectionSongList: {},
+  //是否播放音乐
+  isPlay: true,
+  isLoading: false,
+  isError: false,
+  //搜索列表
+  searchList: []
 };
 
 export default new Vuex.Store({

@@ -1,38 +1,43 @@
 <template>
   <div class="audios" v-if="isShowAudioGet">
     <div class="audios-box">
-      <audio ref="audioMusic" :src="songNowGet" @timeupdate="updateTime" @canplay="durationTime" loop="loop"></audio>
+      <audio ref="audioMusic" :src="songNowGet" @timeupdate="updateTime" @canplay="durationTime" @ended="nextSong" autoplay></audio>
     </div>
     <div class="audio-show">
-      <div class="audio-mes" v-if="songNowListGet[songNowIdx]">
-        <div class="audio-mes-img" v-if="songNowListGet[songNowIdx].al">
-          <img v-lazy="songNowListGet[songNowIdx].al.picUrl + '?thumbnail=20x0&quality=30&type=webp'">
+      <div class="audio-mes">
+        <div class="audio-mes-img" v-if="songNowMesGet.al">
+          <img :src="songNowMesGet.al.picUrl + '?thumbnail=20x0&quality=30&type=webp'">
         </div>
         <div class="audio-mes-text">
-          <span>{{songNowListGet[songNowIdx].name}}</span>
-          <i v-if="songNowListGet[songNowIdx].ar && songNowListGet[songNowIdx].al">{{songNowListGet[songNowIdx].ar[0].name}} - {{songNowListGet[songNowIdx].al.name}}</i>
+          <span>{{songNowMesGet.name}}</span>
+          <i v-if="songNowMesGet.ar && songNowMesGet.al">{{songNowMesGet.ar[0].name}} - {{songNowMesGet.al.name}}</i>
         </div>
       </div>
       <div class="audio-btn">
         <span class="audio-list" @click="songsListShowChild"></span>
-        <span class="audio-play" :class="isPlay ? 'audio-stop' : 'audio-start'" @click="audioIsPlay"></span>
-        <span class="audio-next"></span>
+        <span class="audio-play" :class="isPlayGet ? 'audio-stop' : 'audio-start'" @click="audioIsPlay"></span>
+        <span class="audio-next" @click="nextSong"></span>
       </div>
     </div>
     <div class="audioLine">
       <span ref="line" :style="{width: lineWidth}"></span>
     </div>
+
+    <Popups ref="popups" class="songList-popups">
+      <h4>播放列表</h4>
+      <ListCell :isPop=true :collectionSongListGet="songNowListGet" @songsListHideChild="songsListHideChild"></ListCell>
+    </Popups>
   </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapMutations, mapActions} from 'vuex'
+import Popups from './Popups';
+import ListCell from './ListCell'
 export default {
   name: 'Audios',
   data(){
     return {
-      //是否播放音乐
-      isPlay: false,
       //播放时间
       musicCurrentTime: 0,
       //音乐总时间
@@ -41,21 +46,41 @@ export default {
       lineWidth: 0
     }
   },
-  props: ['songsListShow'],
+  components: {
+    Popups,
+    ListCell
+  },
   computed: {
-    ...mapGetters(['songNowGet', 'isShowAudioGet', 'songNowListGet', 'songNowIdx'])
+    ...mapGetters(['songNowGet', 'isShowAudioGet', 'songNowListGet', 'songIndexGet', 'songNowMesGet', 'detailIdGet', 'isPlayGet'])
   },
   methods: {
+    ...mapMutations(['GET_SONG_INDEX', 'GET_DETAIL_ID', 'GET_SONG_IS_PLAY', 'GET_SONG_IS_PAUSE']),
+    ...mapActions(['songNowMesMethod', 'songNowUrlMethod']),
     //音乐播放暂停
     audioIsPlay(){
-      console.log(this.songNowListGet[this.songNowIdx])
-      if(this.isPlay){
-        this.isPlay = false
+      if(this.isPlayGet){
+        this.$store.commit('GET_SONG_IS_PAUSE')
         this.$refs.audioMusic.pause()
       }else{
-        this.isPlay = true
+        this.$store.commit('GET_SONG_IS_PLAY')
         this.$refs.audioMusic.play()
       }
+    },
+    //下一曲
+    nextSong(){
+      this.$store.commit('GET_SONG_IS_PLAY')
+      //点击下一曲修改位置编号
+      this.$store.commit('GET_SONG_INDEX', this.songIndexGet+1)
+      //点击下一曲修改歌曲id
+      this.$store.commit('GET_DETAIL_ID', this.songNowListGet[this.songIndexGet].id)
+      //点击下一曲修改当前歌曲信息
+      this.songNowMesMethod({id: this.detailIdGet})
+      //重新请求歌曲url
+      this.songNowUrlMethod({id: this.detailIdGet}).then((url)=> {
+        if (!url) {
+          this.nextSong()
+        }
+      })
     },
     //获取播放时间
     updateTime(){
@@ -65,9 +90,13 @@ export default {
     durationTime(){
       this.musicDurationTime = this.$refs.audioMusic.duration
     },
-    //是否显示播放列表
+    //显示播放列表
     songsListShowChild(){
-      this.$emit('songsListShow')
+      this.$refs.popups.isShowPop = true
+    },
+    //隐藏播放列表
+    songsListHideChild(){
+      this.$refs.popups.isShowPop = false
     }
   },
   watch: {

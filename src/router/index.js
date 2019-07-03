@@ -11,9 +11,11 @@ const Rage = () => import(/*webpackChunkName: 'Rage'*/ '@/components/tabCon/Rage
 const SongLis = () => import(/*webpackChunkName: 'SongLis'*/ '@/components/tabCon/SongLis');
 const Rank = () => import(/*webpackChunkName: 'Rank'*/ '@/components/tabCon/Rank');
 const Hot = () => import(/*webpackChunkName: 'Hot'*/ '@/components/tabCon/Hot');
-const Detail = () => import(/*webpackChunkName: 'Detail'*/ '@/components/Detail')
+const Detail = () => import(/*webpackChunkName: 'Detail'*/ '@/components/Detail');
+const Search = () => import(/*webpackChunkName: 'Search'*/ '@/components/Search')
 
 export default new Router({
+  // mode: 'history',
   routes: [
     {
       path: '/rage',
@@ -21,7 +23,10 @@ export default new Router({
     },
     {
       path: '/songLis',
-      component: SongLis
+      component: SongLis,
+      meta: {
+        keepAlive: true
+      }
     },
     {
       path: '/rank',
@@ -34,6 +39,10 @@ export default new Router({
     {
       path: '/detail/:id',
       component: Detail
+    },
+    {
+      path: '/search',
+      component: Search
     },
     {
       path: '/',

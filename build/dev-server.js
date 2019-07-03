@@ -47,6 +47,7 @@ compiler.plugin('compilation', function (compilation) {
 })
 
 if (process.argv.indexOf('--proxy') > 0) {
+  console.log('proxy')
   // 使用代理请求远端数据
   Object.keys(proxyTable).forEach(function (context) {
     let pathRewrite = {};
@@ -63,6 +64,7 @@ if (process.argv.indexOf('--proxy') > 0) {
     }))
   })
 } else {
+  console.log('mock')
   // 使用本地的模拟数据
   Object.keys(mockTable).forEach(function (context) {
     let filename = path.resolve('.' + mockTable[context]);

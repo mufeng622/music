@@ -1,0 +1,66 @@
+@import "./common";
+
+.search{
+  overflow: hidden;
+}
+.backs{
+  display: inline-block;
+  width: .6rem;
+  height: .6rem;
+  background: url("./images/back.png") no-repeat center;
+  background-size: 100%;
+}
+.searchInput{
+  width: 5.4rem;
+  height: .6rem;
+  font-size: .24rem;
+  text-align: center;
+  line-height: .6rem;
+}
+.cancelSearch{
+  text-align: center;
+  font-size: .32rem;
+  color: #fff;
+  margin: 0 .1rem;
+  i{
+    display: inline-block;
+    font-style: normal;
+  }
+}
+.search-list{
+  margin-top: 1.16rem;
+}
+.search-list-item>div{
+  display: flex;
+  flex-direction: row;
+  .search-list-img{
+    flex: 0 0 1.6rem;
+    height: 1.6rem;
+    overflow: hidden;
+    margin-right: .2rem;
+    img{
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+  .search-list-text{
+    width: 5.08rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    h4{
+      width: 100%;
+      font-size: .32rem;
+      @include ellips();
+    }
+    p{
+      font-size: .24rem;
+    }
+  }
+}
+.search-list-no{
+  font-size: .24rem;
+  text-align: center;
+  color: #666;
+  padding-top: 2rem;
+}

@@ -30,8 +30,6 @@ export default {
   },
   components: {
     [Popup.name]: Popup
-  },
-  methods: {
   }
 }
 </script>

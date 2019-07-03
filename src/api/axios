@@ -1,12 +1,16 @@
 
 import axios from 'axios';
+import store from '../store';
 
-axios.defaults.baseUrl = process.env.NODE_ENV === 'mock' ? '/mock' : '/api'
+//axios.defaults.baseUrl = process.env.NODE_ENV === 'mock' ? '/mock' : '/api'
 
 export default {
   defOpt: {
-    method: 'get',
-    timeout: 10000,
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/x-www-form-urlencoded'
+    },
+    timeout: 100000,
     success: function(){},
     error: function(){}
   },
@@ -21,7 +25,29 @@ export default {
         newOpt.error(res)
       }
     }).catch((err)=>{
-      console.log(err)
+      store.commit('GET_IS_SHOW_ERROR')
+      store.commit('GET_IS_HIDE_LOADING')
+      setTimeout(()=>{
+        store.commit('GET_IS_HIDE_ERROR')
+      }, 2000)
     })
   }
 }
+
+//请求拦截器，请求触发后
+axios.interceptors.request.use((config)=>{
+  store.commit('GET_IS_SHOW_LOADING')
+  return config
+}, (err)=>{
+  store.commit('GET_IS_HIDE_LOADING')
+  return Promise.reject(err)
+})
+//请求响应器，请求返回响应后
+axios.interceptors.response.use((config)=>{
+  store.commit('GET_IS_HIDE_LOADING')
+  return config
+}, (err)=>{
+  store.commit('GET_IS_HIDE_LOADING')
+  return Promise.reject(err)
+})
+
